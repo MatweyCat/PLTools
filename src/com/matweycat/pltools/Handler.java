@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class Handler implements Listener {
@@ -27,12 +28,22 @@ public class Handler implements Listener {
         Player p = c.getPlayer();
         String s1 = plugin.getConfig().getString("massanger.changeworld");
         s1 = s1.replace("&", "\u00a7");
-        p.sendMessage(s1 + p.getWorld().getName());
+        p.sendMessage(s1 + " " + p.getWorld().getName());
     }
 
     @EventHandler
     public void teleport(PlayerTeleportEvent t) {
         Player p = t.getPlayer();
-        p.sendMessage("Вы телепортированы на: " + t.getTo().getBlockX() + " " + t.getTo().getBlockY() + " " + t.getTo().getBlockZ());
+        String s2 = plugin.getConfig().getString("massanger.teleport");
+        s2 = s2.replace("&", "\u00a7");
+        p.sendMessage(s2 + " " + t.getTo().getBlockX() + " " + t.getTo().getBlockY() + " " + t.getTo().getBlockZ());
+    }
+
+    @EventHandler
+    public void respawn(PlayerRespawnEvent r) {
+        Player p = r.getPlayer();
+        String s3 = plugin.getConfig().getString("messanger.respawn");
+        s3 = s3.replace("&", "\u00a7");
+        p.sendMessage(s3);
     }
 }
