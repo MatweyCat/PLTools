@@ -3,7 +3,9 @@ package com.matweycat.pltools;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class Handler implements Listener {
     private Main plugin;
@@ -18,5 +20,19 @@ public class Handler implements Listener {
         String s = plugin.getConfig().getString("massanger.join");
         s = s.replace("&", "\u00a7");
         p.sendMessage(s);
+    }
+
+    @EventHandler
+    public void changeworld(PlayerChangedWorldEvent c) {
+        Player p = c.getPlayer();
+        String s1 = plugin.getConfig().getString("massanger.changeworld");
+        s1 = s1.replace("&", "\u00a7");
+        p.sendMessage(s1 + p.getWorld().getName());
+    }
+
+    @EventHandler
+    public void teleport(PlayerTeleportEvent t) {
+        Player p = t.getPlayer();
+        p.sendMessage("Вы телепортированы на: " + t.getTo().getBlockX() + " " + t.getTo().getBlockY() + " " + t.getTo().getBlockZ());
     }
 }

@@ -17,7 +17,7 @@ public class Commands implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(!sender.hasPermission("pltools.reload")) {
             Player p = (Player) sender;
-            String s = plugin.getConfig().getString("massanger.join");
+            String s = plugin.getConfig().getString("massanger.error");
             s = s.replace("&", "\u00a7");
             p.sendMessage(s);
             return true;

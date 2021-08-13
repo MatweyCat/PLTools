@@ -1,3 +1,4 @@
 massanger:
   join: '&aДобро пожаловать на сервер!'
   notperms: '&cУ вас недостаточно прав.'
+  changeworld: '&aВы в мире: '

@@ -1,6 +1,6 @@
 name: PLTools
 main: com.matweycat.pltools.Main
-version: 1.0
+version: 1.1
 commands:
   plreload:
     description: Перезагрузка конфига плагина.
